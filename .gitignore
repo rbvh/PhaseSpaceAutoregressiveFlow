@@ -82,3 +82,6 @@ target/
 # Editors
 .vscode/
 .idea
+
+# Data
+*.csv
