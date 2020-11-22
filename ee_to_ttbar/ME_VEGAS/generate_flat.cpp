@@ -76,5 +76,5 @@ struct flat_generator : public ttbar_base {
 int main() {
   flat_generator flat;
 
-  flat.sample_flat_events(1e4); 
+  flat.sample_flat_events(1e7);
 }

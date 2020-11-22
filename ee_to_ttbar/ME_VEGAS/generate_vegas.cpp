@@ -484,11 +484,11 @@ int main() {
   // Initialize VEGAS with BW prior distribution
   vegas_generator vegas;
 
-  int n_events = 1e6;
+  int n_events = 1.0e7;
 
   // Sample unweighted events
-  vegas.sample_unweighted_events(n_events, false);
+  // vegas.sample_unweighted_events(n_events, false);
 
   // Sample weighted events
-  // vegas.sample_weighted_events(n_events);
+  vegas.sample_weighted_events(n_events);
 }

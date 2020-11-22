@@ -108,7 +108,7 @@ struct ttbar_base {
   ttbar_base() {
     // Hard-code the CoM energy for the moment
     s = 1E6;
-    process.initProc("/Users/rob/Desktop/PhaseSpaceAutoregressiveFlow/ee_to_ttbar/ME_VEGAS/param_card.dat");
+    process.initProc("/home/bstienen/github/PhaseSpaceAutoregressiveFlow/ee_to_ttbar/ME_VEGAS/param_card.dat");
 
     mt = process.pars->mdl_MT;
     mb = process.pars->mdl_MB;
