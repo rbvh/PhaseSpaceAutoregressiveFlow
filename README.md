@@ -60,7 +60,7 @@ This notebook will create three model files (.pt): `best_ess.pt`, `best_validati
 7. Do the same for the test data, by setting the path in the cell LOAD THE TEST DATA to the path of the unweighted data generated in set 2 above.
 8. Run the notebook.
 
-This notebook will create three model files (.pt): `flow_model_weighted_{}_best_ess.pt`, `flow_model_weighted_{}_best_validation.pt` and `flow_model_weighted_{}_final.pt` (where {} is replaced by `min`, `mean`, or `max, depending on your configuration). We recommend using `flow_model_weighted_{}_best_validation.pt` for any further steps you might take.
+This notebook will create three model files (.pt): `flow_model_weighted_{}_best_ess.pt`, `flow_model_weighted_{}_best_validation.pt` and `flow_model_weighted_{}_final.pt` (where {} is replaced by `min`, `mean`, or `max`, depending on your configuration). We recommend using `flow_model_weighted_{}_best_validation.pt` for any further steps you might take.
 
 ### 6. Sampling an autoregressive flow trained on unweighted or weighted events
 1. Follow instruction set (4) or (5) above.
