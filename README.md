@@ -4,9 +4,9 @@ This repository contains all code used in the paper 'Phase Space Sampling and In
 
 If you used this code in your own scholarly work, don't forget to cite the paper:
 
-  Bob Stienen and Rob Verheyen
-  Phase Space Sampling and Inference from Weighted Events with Autoregressive Flows
-  [more information soon]
+    Bob Stienen and Rob Verheyen
+    Phase Space Sampling and Inference from Weighted Events with Autoregressive Flows
+    [more information soon]
 
 ## What does this repository contain?
 This repository contains three distinct things.
