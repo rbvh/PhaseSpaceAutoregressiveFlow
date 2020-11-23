@@ -54,7 +54,7 @@ This notebook will create three model files (.pt): `best_ess.pt`, `best_validati
 1. Create weighted events with instruction set (3) above.
 2. Create unweighted events with instruction set (2) above.
 3. Open the notebook `ee_to_ttbar/train_flow_unweighted.ipynb`.
-4. Define which reference weight you want to use. You can do this in the cell immediately below the heading REWEIGHTING STRATEGY. The setting must be `'min', `'mean'`, or `'max'`.
+4. Define which reference weight you want to use. You can do this in the cell immediately below the heading REWEIGHTING STRATEGY. The setting must be `'min'`, `'mean'`, or `'max'`.
 5. Set the hyperparameters in the cell under the HYPERPARAMETERS heading to the settings you wish to use. The default settings are the ones as used in the paper.
 6. Direct the notebook to the data and weights created in step 1 by accordingly changing the path in the cell immediately below the LOAD THE DATA AND REWEIGHT heading.
 7. Do the same for the test data, by setting the path in the cell LOAD THE TEST DATA to the path of the unweighted data generated in set 2 above.
