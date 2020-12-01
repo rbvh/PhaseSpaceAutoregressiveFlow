@@ -444,6 +444,28 @@ struct vegas_generator : public ttbar_base {
     write_weights(weights, "weighted");
   }
 
+  void sample_flat_events(int n) {
+    // Fill samples
+    while(samples.size() < n) {
+      vector<double> sample;
+      for (int i=0; i<14; i++) {
+        sample.push_back(rng());
+      }
+
+      // Compute weights
+      double weight = compute_cross_section_weight(sample);
+
+      if (weight > 0) {
+        samples.push_back(sample);
+        weights.push_back(weight);
+      }
+    }
+
+    // And save the events
+    write_events(samples, "flat");
+    write_weights(weights, "flat");
+  }
+
   void print_grid() {
     for (int i=0; i<grid.size(); i++) {
       for (int j=0; j<grid[i].size(); j++) {
@@ -506,8 +528,7 @@ int main(int argc, char* argv[]) {
   int nev;
   if (ip.has_option("-nev")) {
     string nev_string = ip.get_option("-nev");
-    nev = stoi(nev_string);
-    cout << nev << endl;
+    nev = stod(nev_string);
   }
   else {
     cout << "Please provide an event number" << endl;
@@ -515,16 +536,23 @@ int main(int argc, char* argv[]) {
     exit(0);
   }
 
-  // Initialize VEGAS with BW prior distribution
-  vegas_generator vegas;
 
   if (ip.has_option("-weighted")) {
+    // Initialize VEGAS with BW prior distribution
+    vegas_generator vegas;
     vegas.sample_weighted_events(nev);
   }
   else if (ip.has_option("-unweighted")) {
+    // Initialize VEGAS with BW prior distribution
+    vegas_generator vegas;
     vegas.sample_unweighted_events(nev, false);
   }
+  else if (ip.has_option("-flat")) {
+    // Initialize VEGAS without BW prior distribution
+    vegas_generator vegas(false);
+    vegas.sample_flat_events(nev);
+  }
   else {
-    cout << "Please provide either the flag 'weighted' or the flag 'unweighted'" << endl;
+    cout << "Please provide one of the flags '-weighted','unweighted' or '-flat'" << endl;
   }
 }

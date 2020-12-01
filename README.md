@@ -1,23 +1,25 @@
 # Phase Space Sampling and Inference from Weighted Events with Autoregressive Flows
 
-This repository contains all code used in the paper 'Phase Space Sampling and Inference from Weighted Events with Autoregressive Flows' by Bob Stienen and Rob Verheyen. This code showcases the use of autoregressive flows for the learning of event distributions based on weighted data, including data with negative weights. The interested reader is referred to the paper [link soon available].
-
-If you used this code in your own scholarly work, don't forget to cite the paper:
-
-    Bob Stienen and Rob Verheyen
-    Phase Space Sampling and Inference from Weighted Events with Autoregressive Flows
-    [more information soon]
+This repository contains all code used in the paper 'Phase Space Sampling and Inference from Weighted Events with Autoregressive Flows' by Bob Stienen and Rob Verheyen. This code showcases the use of autoregressive flows for the learning of event distributions based on weighted data, including data with negative weights. The interested reader is referred to the paper `2011.13445`.
 
 ## What does this repository contain?
 This repository contains three distinct things.
 
-1. An altered version of the `nflows` package, which can be found in the folder `nflows-0.13`. This version ... . When using the code in this repository, please install this version of `nflows` over the official version.
-2. A C++ event generator created by Madgraph, used to generate the data on which the autoregressive flows can be trained. This generator can be found in the folder `ee_to_ttbar/ME_VEGAS`. That folder also contains the code to calculate the true likelihood of provided data points, as well as code to invert the unit box transformation described in the paper. Information on how to use these codes can be found in this folder as well.
+1. Slightly modified version of the `nflows` package, which can be found in the folder `nflows-0.13`. When using the code in this repository, please install this version of `nflows` over the official version.
+2. A C++ event generator with a custom implementation of VEGAS and an interface to the Madgraph matrix element for ee > ttbar, used to generate the data on which the autoregressive flows can be trained. This generator can be found in the folder `ee_to_ttbar/ME_VEGAS`. That folder also contains the code to calculate the true likelihood of provided data points, as well as code to invert the unit box transformation described in the paper.
 3. A whole series of Jupyter Notebooks, containing all code necessary to reproduce the described experiments.
 
 The remainder of this README details how to reproduce the experiments.
 
 ## Reproducing the experiments in the paper
+## ee -> ttbar 
+### 1. Event generation
+
+1. Go to `ee_to_ttbar/ME_VEGAS`
+2. Use `make` to compile the code in this folder.
+3. Run `generate_vegas` with command-line arguments `-nev n` to indicate the number of events and one of the flags `-weighted`, `-unweighted` or `-flat`
+4. For plotting purposes, the generated data can be converted to 4-vectors by running `convert_to_ps.cpp`.
+
 ### 1. Creating flat events in the space of the ee -> ttbar distribution
 
 1. Go to `ee_to_ttbar/ME_VEGAS`
