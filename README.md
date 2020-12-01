@@ -27,7 +27,7 @@ The remainder of this README details how to reproduce the experiments.
 4. Direct the notebook to the data created in step 1 by accordingly changing the path in the cell immediately below the LOADING THE TRAINING DATA heading.
 5. Run the notebook.
 
-This notebook will create three model files (.pt): `best_ess.pt`, `best_validation.pt` and `final.pt`. We recommend using `best_validation.pt` for any further steps you might take.
+This notebook will create two model files (.pt): `best_validation.pt` and `final.pt`. We recommend using `best_validation.pt` for any further steps you might take.
 
 #### 3. Training an autoregressive flow on weighted events
 1. Create weighted events with instruction set (3) above.
@@ -39,7 +39,7 @@ This notebook will create three model files (.pt): `best_ess.pt`, `best_validati
 7. Do the same for the test data, by setting the path in the cell LOAD THE TEST DATA to the path of the unweighted data generated in set 2 above.
 8. Run the notebook.
 
-This notebook will create three model files (.pt): `flow_model_weighted_{}_best_ess.pt`, `flow_model_weighted_{}_best_validation.pt` and `flow_model_weighted_{}_final.pt` (where {} is replaced by `min`, `mean`, or `max`, depending on your configuration). We recommend using `flow_model_weighted_{}_best_validation.pt` for any further steps you might take.
+This notebook will create two model files (.pt): `flow_model_weighted_{}_best_validation.pt` and `flow_model_weighted_{}_final.pt` (where {} is replaced by `min`, `mean`, or `max`, depending on your configuration). We recommend using `flow_model_weighted_{}_best_validation.pt` for any further steps you might take.
 
 #### 4. Sampling an autoregressive flow trained on unweighted or weighted events
 1. Follow instruction set (4) or (5) above.
@@ -49,7 +49,7 @@ This notebook will create three model files (.pt): `flow_model_weighted_{}_best_
 
 Following these steps will create two files in the `ee_to_ttbar/data` folder, one for the data and one for the corresponding likelihoods. The names of these files depend on the model name defined in step 3.
 
-##### 5. Evaluating unweighting efficiencies
+#### 5. Evaluating unweighting efficiencies
 1. Unweighting efficiencies for VEGAS events can be evaluated by running `compute_metrics_from_weights.cpp` and supplying a weights file.
 2. Unweighting efficiencies for Flow event samples can be evaluated by running `compute_metrics_from_likelihoods.cpp` and supplying a samples and weights file.
 
