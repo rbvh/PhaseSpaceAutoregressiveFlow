@@ -21,7 +21,7 @@ The remainder of this README details how to reproduce the experiments.
 4. For plotting purposes, the generated data can be converted to 4-vectors by running `convert_to_ps.cpp`.
 
 #### 2. Training an autoregressive flow on unweighted events
-1. Create unweighted events with instruction set (2) above.
+1. Create unweighted events with instruction set (1) above.
 2. Open the notebook `ee_to_ttbar/train_flow_unweighted.ipynb`.
 3. Set the hyperparameters in the cell under the HYPERPARAMETERS heading to the settings you wish to use. The default settings are the ones as used in the paper.
 4. Direct the notebook to the data created in step 1 by accordingly changing the path in the cell immediately below the LOADING THE TRAINING DATA heading.
@@ -48,3 +48,16 @@ This notebook will create three model files (.pt): `flow_model_weighted_{}_best_
 4. Run the notebook.
 
 Following these steps will create two files in the `ee_to_ttbar/data` folder, one for the data and one for the corresponding likelihoods. The names of these files depend on the model name defined in step 3.
+
+##### 5. Evaluating unweighting efficiencies
+1. Unweighting efficiencies for VEGAS events can be evaluated by running `compute_metrics_from_weights.cpp` and supplying a weights file.
+2. Unweighting efficiencies for Flow event samples can be evaluated by running `compute_metrics_from_likelihoods.cpp` and supplying a samples and weights file.
+
+### pp -> ttbar
+#### 1. Event generation
+1. A Madgraph script and a MadSpin card are included in the `pp_to_ttbar/generation_scripts` folder. 
+These may be used by running ./mg5_aMC mg5_script, exiting event generation, replacing the madspin_card.dat in the newly created `ttbar` folder, and running the `ttbar/bin/generate_events` script. 
+2. A pythia program and command file are included to shower decayed events, cluster them with `fastjet` and output the samples and (negative) weights directly.
+
+#### 2. Training/sampling an autoregressive flow on negatively weighted events
+1. Training of and sampling from the autoregressive flow proceeds similar to the previous experiments
