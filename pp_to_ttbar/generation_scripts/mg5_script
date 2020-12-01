@@ -1,0 +1,6 @@
+generate p p > t t~ [QCD]
+output ttbar
+launch -p
+madspin = ON
+set parton_shower PYTHIA8
+set nevents 1000000
