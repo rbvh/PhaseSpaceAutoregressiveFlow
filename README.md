@@ -12,15 +12,15 @@ This repository contains three distinct things.
 The remainder of this README details how to reproduce the experiments.
 
 ## Reproducing the experiments in the paper
-## \\(ee -> ttbar\\)
-### 1. Event generation
+### ee -> ttbar
+#### 1. Event generation
 
 1. Go to `ee_to_ttbar/ME_VEGAS`
 2. Use `make` to compile the code in this folder.
 3. Run `generate_vegas` with command-line arguments `-nev n` to indicate the number of events and one of the flags `-weighted`, `-unweighted` or `-flat`
 4. For plotting purposes, the generated data can be converted to 4-vectors by running `convert_to_ps.cpp`.
 
-### 2. Training an autoregressive flow on unweighted events
+#### 2. Training an autoregressive flow on unweighted events
 1. Create unweighted events with instruction set (2) above.
 2. Open the notebook `ee_to_ttbar/train_flow_unweighted.ipynb`.
 3. Set the hyperparameters in the cell under the HYPERPARAMETERS heading to the settings you wish to use. The default settings are the ones as used in the paper.
@@ -29,7 +29,7 @@ The remainder of this README details how to reproduce the experiments.
 
 This notebook will create three model files (.pt): `best_ess.pt`, `best_validation.pt` and `final.pt`. We recommend using `best_validation.pt` for any further steps you might take.
 
-### 3. Training an autoregressive flow on weighted events
+#### 3. Training an autoregressive flow on weighted events
 1. Create weighted events with instruction set (3) above.
 2. Create unweighted events with instruction set (2) above.
 3. Open the notebook `ee_to_ttbar/train_flow_unweighted.ipynb`.
@@ -41,7 +41,7 @@ This notebook will create three model files (.pt): `best_ess.pt`, `best_validati
 
 This notebook will create three model files (.pt): `flow_model_weighted_{}_best_ess.pt`, `flow_model_weighted_{}_best_validation.pt` and `flow_model_weighted_{}_final.pt` (where {} is replaced by `min`, `mean`, or `max`, depending on your configuration). We recommend using `flow_model_weighted_{}_best_validation.pt` for any further steps you might take.
 
-### 4. Sampling an autoregressive flow trained on unweighted or weighted events
+#### 4. Sampling an autoregressive flow trained on unweighted or weighted events
 1. Follow instruction set (4) or (5) above.
 2. Open the notebook `ee_to_ttbar/sample_flow.ipynb`
 3. In the seventh cell, change the `model_name` variable to the name of the model file (without `.pt`) as it can be found in the `ee_to_ttbar` folder.
