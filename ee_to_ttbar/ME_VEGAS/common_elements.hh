@@ -12,15 +12,15 @@
 // ------------------------------------------------------------------------
 void compute_metrics(vector<double> &w) {
   double w_average = 0;
-  double w2 = 0;
+  // double w2 = 0;
 
   for (int i=0; i<w.size(); i++) {
     w_average += w[i]/w.size();
-    w2 += w[i]*w[i];
+    // w2 += w[i]*w[i];
   }
 
-  cout << "Cross section " << w_average << " +- " << sqrt((w2 - w.size()*w_average*w_average))/w.size() << endl;
-  cout << "ESS           " << w.size()*w_average*w_average/w2 << endl;
+  // cout << "Cross section " << w_average << " +- " << sqrt((w2 - w.size()*w_average*w_average))/w.size() << endl;
+  // cout << "ESS           " << w.size()*w_average*w_average/w2 << endl;
 
   // Compute the unweighting efficiencies and corresponding coverage
   sort(w.begin(), w.end());
@@ -108,7 +108,7 @@ struct ttbar_base {
   ttbar_base() {
     // Hard-code the CoM energy for the moment
     s = 1E6;
-    process.initProc("/home/bstienen/github/PhaseSpaceAutoregressiveFlow/ee_to_ttbar/ME_VEGAS/param_card.dat");
+    process.initProc("param_card.dat");
 
     mt = process.pars->mdl_MT;
     mb = process.pars->mdl_MB;

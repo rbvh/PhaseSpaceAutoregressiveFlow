@@ -480,15 +480,51 @@ struct vegas_generator : public ttbar_base {
   bool print = false;
 };
 
-int main() {
+// Helper class to parse command line options
+struct input_parser {
+  input_parser (int &argc, char **argv) {
+    for (int i = 1; i < argc; ++i) arglist.push_back(string(argv[i]));
+  }
+
+  const string& get_option(const string &opt) const {
+    vector<string>::const_iterator itr = find(arglist.begin(),
+      arglist.end(), opt);
+    if (itr != arglist.end() && ++itr != arglist.end()) return *itr;
+    return "";
+  }
+
+  bool has_option(const string &opt) const {
+    return find(arglist.begin(), arglist.end(), opt) != arglist.end();
+  }
+
+  vector<string> arglist;
+};
+
+int main(int argc, char* argv[]) {
+  input_parser ip(argc, argv);
+
+  int nev;
+  if (ip.has_option("-nev")) {
+    string nev_string = ip.get_option("-nev");
+    nev = stoi(nev_string);
+    cout << nev << endl;
+  }
+  else {
+    cout << "Please provide an event number" << endl;
+    cout << "Syntax: '-nev n' where n is the number of events" << endl;
+    exit(0);
+  }
+
   // Initialize VEGAS with BW prior distribution
   vegas_generator vegas;
 
-  int n_events = 1.0e7;
-
-  // Sample unweighted events
-  // vegas.sample_unweighted_events(n_events, false);
-
-  // Sample weighted events
-  vegas.sample_weighted_events(n_events);
+  if (ip.has_option("-weighted")) {
+    vegas.sample_weighted_events(nev);
+  }
+  else if (ip.has_option("-unweighted")) {
+    vegas.sample_unweighted_events(nev, false);
+  }
+  else {
+    cout << "Please provide either the flag 'weighted' or the flag 'unweighted'" << endl;
+  }
 }
