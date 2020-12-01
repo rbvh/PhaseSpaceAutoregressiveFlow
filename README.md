@@ -12,20 +12,13 @@ This repository contains three distinct things.
 The remainder of this README details how to reproduce the experiments.
 
 ## Reproducing the experiments in the paper
-## ee -> ttbar 
+## \\(ee -> ttbar\\)
 ### 1. Event generation
 
 1. Go to `ee_to_ttbar/ME_VEGAS`
 2. Use `make` to compile the code in this folder.
 3. Run `generate_vegas` with command-line arguments `-nev n` to indicate the number of events and one of the flags `-weighted`, `-unweighted` or `-flat`
 4. For plotting purposes, the generated data can be converted to 4-vectors by running `convert_to_ps.cpp`.
-
-### 1. Creating flat events in the space of the ee -> ttbar distribution
-
-1. Go to `ee_to_ttbar/ME_VEGAS`
-2. Open the file `generate_flat.cpp` and change the argument of the function in line 79 to the number of data points that you want to generate.
-3. Use `make` to compile the code in this folder.
-4. Run `generate_flat`.
 
 ### 2. Training an autoregressive flow on unweighted events
 1. Create unweighted events with instruction set (2) above.
